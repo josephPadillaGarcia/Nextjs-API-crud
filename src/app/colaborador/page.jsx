@@ -1,14 +1,24 @@
-'use client'
+'use server'
 
 import { useState } from "react";
 
-function Colaborador(){
+async function getWorkerData(){
+    const url = 'http://localhost:3000/api/worker';
+    const res = await fetch(url, {method: 'GET'});
+    const resultado  = await res.json();
+
+    return resultado;
+}
+
+async function Colaborador(){
 
     const [name, setName] = useState("");
     const [lastname, setLastName] = useState("");
     const [age, setAge] = useState("");
     const [dni, setDni] = useState("");
     const point = 0;
+
+    const dataworker = await getWorkerData();
 
     const submitForm = (e) =>{
         e.preventDefault();
@@ -27,7 +37,7 @@ function Colaborador(){
 
             console.log("trabajador: ", newWorker);
 
-            fetch('http://localhost:3001/api/worker', {
+            fetch('http://localhost:3000/api/worker', {
                 method: 'POST',
                 body: JSON.stringify(newWorker),
             });
@@ -38,6 +48,11 @@ function Colaborador(){
 
 
     }
+
+    const deleteworker = () =>{
+
+    }
+
 
     return(
         <div>
@@ -85,6 +100,23 @@ function Colaborador(){
 
                 <button type="submit">Agregar</button>
             </form>
+
+            <h2>Lista de Trabajadores</h2>
+            <pre>{resultado}</pre>
+            <div className="content__worker">
+                <div className="worker">
+                    {dataworker.map((worker, index) => (
+                        <div>
+
+                            <p>Trabajador</p>
+                            <p>Edad</p>
+                            <p>DNI</p>
+                            <button onClick={deleteworker}>Borrar</button>
+                        </div>
+                    ))}
+                    
+                </div>
+            </div>
         </div>
     )
 }

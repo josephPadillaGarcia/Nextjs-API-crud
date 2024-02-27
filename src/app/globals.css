@@ -1,0 +1,12 @@
+.content__worker {
+    max-width: 520px;
+}
+
+.worker {
+    display: grid;
+    grid-auto-flow: column;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid red;
+    margin-top: 1rem;
+}
+
