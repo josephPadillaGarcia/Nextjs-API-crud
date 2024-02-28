@@ -22,7 +22,7 @@ export async function GET() {
     try {
         const res = await prisma.worker.findMany();
         return NextResponse.json(
-            {data: res},
+            {data:res},
             {status: 200}
         )
     } catch (error) {

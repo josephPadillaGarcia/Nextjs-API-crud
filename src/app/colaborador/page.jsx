@@ -1,24 +1,17 @@
-'use server'
-
+'use client'
 import { useState } from "react";
 
-async function getWorkerData(){
-    const url = 'http://localhost:3000/api/worker';
-    const res = await fetch(url, {method: 'GET'});
-    const resultado  = await res.json();
+const deleteworker = () =>{
 
-    return resultado;
 }
 
-async function Colaborador(){
+function Colaborador({resultado}){
 
     const [name, setName] = useState("");
     const [lastname, setLastName] = useState("");
     const [age, setAge] = useState("");
     const [dni, setDni] = useState("");
     const point = 0;
-
-    const dataworker = await getWorkerData();
 
     const submitForm = (e) =>{
         e.preventDefault();
@@ -35,8 +28,6 @@ async function Colaborador(){
                 points: point
             }
 
-            console.log("trabajador: ", newWorker);
-
             fetch('http://localhost:3000/api/worker', {
                 method: 'POST',
                 body: JSON.stringify(newWorker),
@@ -45,14 +36,7 @@ async function Colaborador(){
         } catch (error) {
             
         }
-
-
     }
-
-    const deleteworker = () =>{
-
-    }
-
 
     return(
         <div>
@@ -101,24 +85,32 @@ async function Colaborador(){
                 <button type="submit">Agregar</button>
             </form>
 
-            <h2>Lista de Trabajadores</h2>
-            <pre>{resultado}</pre>
-            <div className="content__worker">
-                <div className="worker">
-                    {dataworker.map((worker, index) => (
-                        <div>
 
-                            <p>Trabajador</p>
-                            <p>Edad</p>
-                            <p>DNI</p>
-                            <button onClick={deleteworker}>Borrar</button>
-                        </div>
-                    ))}
-                    
+            <h2>Lista de Trabajadores</h2>
+            {resultado ?
+                <div className="content__worker">
+                        {resultado.map(resul =>(
+                            <div className="worker">
+                                <p>{resul.nombre}</p>
+                                <button onClick={deleteworker}>Borrar</button>                    
+                            </div> 
+                        ))}              
                 </div>
-            </div>
+            : ''}
         </div>
     )
+}
+
+export const getDataWorker = async () =>{
+    const url = 'http://localhost:3000/api/worker';
+    const res = await fetch(url, {method: 'GET'});
+    const resultados  = await res.json();
+
+    return {
+        props:{
+            resultado: resultados
+        }
+    };
 }
 
 export default Colaborador
