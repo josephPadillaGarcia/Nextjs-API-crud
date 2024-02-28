@@ -1,17 +1,19 @@
 'use client'
-import { useState } from "react";
+//import { useState } from "react";
 
 const deleteworker = () =>{
 
 }
 
-function Colaborador({resultado}){
+async function Colaborador(){
 
-    const [name, setName] = useState("");
-    const [lastname, setLastName] = useState("");
-    const [age, setAge] = useState("");
-    const [dni, setDni] = useState("");
+    const name = "";
+    const lastname = "";
+    const age = "";
+    const dni = "";
     const point = 0;
+
+    const dataworkers = await getDataWorker();
 
     const submitForm = (e) =>{
         e.preventDefault();
@@ -48,7 +50,7 @@ function Colaborador({resultado}){
                         type="text" 
                         name="name" 
                         value={name}
-                        onChange={({target}) => setName(target?.value)}
+                        //onChange={({target}) => setName(target?.value)}
                     />
                 </div>
 
@@ -58,7 +60,7 @@ function Colaborador({resultado}){
                         type="text" 
                         name="lastname" 
                         value={lastname}
-                        onChange={({target}) => setLastName(target?.value)}
+                        //onChange={({target}) => setLastName(target?.value)}
                     />
                 </div>
 
@@ -68,7 +70,7 @@ function Colaborador({resultado}){
                         type="number" 
                         name="age"
                         value={age}
-                        onChange={({target}) => setAge(target?.value)}
+                        //onChange={({target}) => setAge(target?.value)}
                     />
                 </div>
 
@@ -78,7 +80,7 @@ function Colaborador({resultado}){
                         type="number" 
                         name="dni"
                         value={dni}
-                        onChange={({target}) => setDni(target?.value)}
+                        //onChange={({target}) => setDni(target?.value)}
                     />
                 </div>
 
@@ -87,30 +89,28 @@ function Colaborador({resultado}){
 
 
             <h2>Lista de Trabajadores</h2>
-            {resultado ?
                 <div className="content__worker">
-                        {resultado.map(resul =>(
-                            <div className="worker">
-                                <p>{resul.nombre}</p>
+                <div className="worker">
+                                <p>{dataworkers.data.nombre}</p>
                                 <button onClick={deleteworker}>Borrar</button>                    
-                            </div> 
-                        ))}              
+                            </div>
+                                 
                 </div>
-            : ''}
         </div>
     )
 }
 
 export const getDataWorker = async () =>{
     const url = 'http://localhost:3000/api/worker';
-    const res = await fetch(url, {method: 'GET'});
+    const res = await fetch(url, {method: 'GET', cache: 'no-cache'});
     const resultados  = await res.json();
-
-    return {
+    console.log(resultados)
+    return resultados;
+    /*return {
         props:{
             resultado: resultados
         }
-    };
+    };*/
 }
 
 export default Colaborador
