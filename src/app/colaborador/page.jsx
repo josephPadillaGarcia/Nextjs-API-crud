@@ -1,19 +1,17 @@
 'use client'
 import { useState, useEffect } from "react";
 
-const deleteworker = () =>{
-
-}
-
 function Colaborador(){
 
-    const name = "";
-    const lastname = "";
-    const age = "";
-    const dni = "";
+    const [name, setName] = useState("");
+    const [lastname, setLastName] = useState("");
+    const [age, setAge] = useState("");
+    const [dni, setDni] = useState("");
     const point = 0;
 
     const [data, setData] = useState([]);
+
+    //const [idworker, setIdWorker] = useState("");
 
     //const dataworkers = await getDataWorker();
 
@@ -28,6 +26,13 @@ function Colaborador(){
         const res = await fetch(url, {method: 'GET', cache: 'no-cache'});
         const resultados  = await res.json();
         setData(resultados.data);
+    }
+
+    const deleteworker = async (id) =>{        
+        //console.log("id: " + id);
+        const url = 'http://localhost:3000/api/workerid/'+id;
+        const res = await fetch(url, {method: 'DELETE'});
+        getDataWorker();
     }
 
     const submitForm = (e) =>{
@@ -49,7 +54,6 @@ function Colaborador(){
                 method: 'POST',
                 body: JSON.stringify(newWorker),
             });
-
         } catch (error) {
             
         }
@@ -65,7 +69,7 @@ function Colaborador(){
                         type="text" 
                         name="name" 
                         value={name}
-                        //onChange={({target}) => setName(target?.value)}
+                        onChange={({target}) => setName(target?.value)}
                     />
                 </div>
 
@@ -75,7 +79,7 @@ function Colaborador(){
                         type="text" 
                         name="lastname" 
                         value={lastname}
-                        //onChange={({target}) => setLastName(target?.value)}
+                        onChange={({target}) => setLastName(target?.value)}
                     />
                 </div>
 
@@ -85,7 +89,7 @@ function Colaborador(){
                         type="number" 
                         name="age"
                         value={age}
-                        //onChange={({target}) => setAge(target?.value)}
+                        onChange={({target}) => setAge(target?.value)}
                     />
                 </div>
 
@@ -95,7 +99,7 @@ function Colaborador(){
                         type="number" 
                         name="dni"
                         value={dni}
-                        //onChange={({target}) => setDni(target?.value)}
+                        onChange={({target}) => setDni(target?.value)}
                     />
                 </div>
 
@@ -109,7 +113,7 @@ function Colaborador(){
                         data.map(w => (
                             <div className="worker">
                                 <p>{w.nombre}</p>
-                                <button onClick={deleteworker}>Borrar</button>                    
+                                <button onClick={() => deleteworker(w.idworker)}>Borrar</button>                    
                             </div>
                         ))
                     }                                 
