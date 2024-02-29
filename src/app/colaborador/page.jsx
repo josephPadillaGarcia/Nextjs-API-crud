@@ -122,6 +122,4 @@ function Colaborador(){
     )
 }
 
-
-
 export default Colaborador
