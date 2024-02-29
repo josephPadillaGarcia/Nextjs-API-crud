@@ -1,11 +1,11 @@
 'use client'
-//import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const deleteworker = () =>{
 
 }
 
-async function Colaborador(){
+function Colaborador(){
 
     const name = "";
     const lastname = "";
@@ -13,7 +13,22 @@ async function Colaborador(){
     const dni = "";
     const point = 0;
 
-    const dataworkers = await getDataWorker();
+    const [data, setData] = useState([]);
+
+    //const dataworkers = await getDataWorker();
+
+    //console.log(dataworkers);
+
+    useEffect(() => {
+        getDataWorker();
+    }, [])
+
+    const getDataWorker = async () =>{
+        const url = 'http://localhost:3000/api/worker';
+        const res = await fetch(url, {method: 'GET', cache: 'no-cache'});
+        const resultados  = await res.json();
+        setData(resultados.data);
+    }
 
     const submitForm = (e) =>{
         e.preventDefault();
@@ -90,27 +105,19 @@ async function Colaborador(){
 
             <h2>Lista de Trabajadores</h2>
                 <div className="content__worker">
-                <div className="worker">
-                                <p>{dataworkers.data.nombre}</p>
+                    {
+                        data.map(w => (
+                            <div className="worker">
+                                <p>{w.nombre}</p>
                                 <button onClick={deleteworker}>Borrar</button>                    
                             </div>
-                                 
+                        ))
+                    }                                 
                 </div>
         </div>
     )
 }
 
-export const getDataWorker = async () =>{
-    const url = 'http://localhost:3000/api/worker';
-    const res = await fetch(url, {method: 'GET', cache: 'no-cache'});
-    const resultados  = await res.json();
-    console.log(resultados)
-    return resultados;
-    /*return {
-        props:{
-            resultado: resultados
-        }
-    };*/
-}
+
 
 export default Colaborador
