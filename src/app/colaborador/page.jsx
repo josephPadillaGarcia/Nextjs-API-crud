@@ -54,9 +54,13 @@ function Colaborador(){
                 method: 'POST',
                 body: JSON.stringify(newWorker),
             });
+
         } catch (error) {
             
         }
+        
+        
+
     }
 
     return(
@@ -113,6 +117,10 @@ function Colaborador(){
                         data.map(w => (
                             <div className="worker">
                                 <p>{w.nombre}</p>
+                                <p>{w.apellido}</p>
+                                <p>{w.edad}</p>
+                                <p>{w.dni}</p>
+                                <p>{w.points}</p>
                                 <button onClick={() => deleteworker(w.idworker)}>Borrar</button>                    
                             </div>
                         ))
