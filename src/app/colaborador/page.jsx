@@ -53,8 +53,8 @@ function Colaborador(){
             fetch('http://localhost:3000/api/worker', {
                 method: 'POST',
                 body: JSON.stringify(newWorker),
-            });
-
+            }).then(()=>(getDataWorker())).catch((e)=>(console.log(e)))
+            
         } catch (error) {
             
         }
