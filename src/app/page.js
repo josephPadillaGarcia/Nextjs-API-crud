@@ -5,9 +5,7 @@ import styles from './page.module.css'
 export default function Home() {
 
   const [name, setName] = useState("");
-  //const [point, setPoint] = useState([]);
   const [data, setData] = useState([]);
-
   const [point , setPoint] = useState('');
 
   useEffect(() => {
@@ -21,12 +19,9 @@ export default function Home() {
     setData(data)
   }
 
-  const updatePoint = async (id, workerpoint, addpoint) => {
-      
+  const updatePoint = async (id, workerpoint, addpoint) => {      
     const respoint = workerpoint + addpoint;
     const changePoint = {
-      /*id: id,
-      point: point,*/
       points: respoint
     }
     const url = 'http://localhost:3000/api/workerid/'+id;
@@ -35,19 +30,19 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <main className='content'>
         <h1>
           Buscar
         </h1>
-        <div>
+        <div className='search'>
             <input 
                 type="text" 
                 name="name" 
                 value={name}
                 onChange={({target}) => setName(target?.value)}
             />
+            <button type="" className="button" onClick={() => searchForm(name)}>Buscar</button>
         </div>
-        <button type="" onClick={() => searchForm(name)}>Buscar</button>
 
         <div className="content__worker">
             {
@@ -58,20 +53,12 @@ export default function Home() {
                         <p>{w.points}</p>
                         <input 
                                 type="number" 
-                                name={w.idworker + "point"}
-                                //value={point.find(p => p.id == w.idworker)}
-                                /*onChange={({target}) => 
-                                {setPoint([...point,{id: w.idworker, value: target?.value}])
-                                  console.log(target?.value)
-                                  console.log(point) 
-                                }}*/
-                                //value={point}
-
-                              onChange={({target}) => setPoint(parseInt(target?.value))}
+                                name="point"
+                                onChange={({target}) => setPoint(parseInt(target?.value))}
                             />
                             <button 
-                              //onClick={() => updatePoint(w.idworker, w.points, point.find(p => p.id == w.idworker))}
                               onClick={() => updatePoint(w.idworker, w.points, point)}
+                              className="button"
                               >Agregar punto</button>              
                     </div>
                 ))

@@ -107,7 +107,7 @@ function Colaborador(){
 
 
             <h2>Lista de Trabajadores</h2>
-                <div className="content__worker">
+                <div className="content__worker  content__worker__scroll">
                     {
                         data.map(w => (
                             <div className="worker">
@@ -116,7 +116,7 @@ function Colaborador(){
                                 <p>{w.edad}</p>
                                 <p>{w.dni}</p>
                                 <p>{w.points}</p>
-                                <button onClick={() => deleteworker(w.idworker)}>Borrar</button>                    
+                                <button className="button" onClick={() => deleteworker(w.idworker)}>Borrar</button>                    
                             </div>
                         ))
                     }                                 
