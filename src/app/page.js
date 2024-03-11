@@ -5,8 +5,10 @@ import styles from './page.module.css'
 export default function Home() {
 
   const [name, setName] = useState("");
-  const [point, setPoint] = useState([]);
+  //const [point, setPoint] = useState([]);
   const [data, setData] = useState([]);
+
+  const [point , setPoint] = useState('');
 
   useEffect(() => {
     searchForm();
@@ -19,19 +21,17 @@ export default function Home() {
     setData(data)
   }
 
-  const updatePoint = async (id, point, updatepoint) => {
-    const Numpoint = parseInt(updatepoint);  
-    const respoint = point + Numpoint;
+  const updatePoint = async (id, workerpoint, addpoint) => {
+      
+    const respoint = workerpoint + addpoint;
     const changePoint = {
-      id: id,
-      point: point,
-        points: respoint
+      /*id: id,
+      point: point,*/
+      points: respoint
     }
-
-    //console.log(changePoint)
-    /*const url = 'http://localhost:3000/api/workerid/'+id;
+    const url = 'http://localhost:3000/api/workerid/'+id;
     const res = await fetch(url, {method: 'PUT', body:JSON.stringify(changePoint)});
-    searchForm(name);*/
+    searchForm(name);
   }
 
   return (
@@ -58,17 +58,21 @@ export default function Home() {
                         <p>{w.points}</p>
                         <input 
                                 type="number" 
-                                name="point"
-                                value={point.find(p => p.id == w.idworker)}
-                                onChange={({target}) => 
+                                name={w.idworker + "point"}
+                                //value={point.find(p => p.id == w.idworker)}
+                                /*onChange={({target}) => 
                                 {setPoint([...point,{id: w.idworker, value: target?.value}])
                                   console.log(target?.value)
                                   console.log(point) 
-                                }}
+                                }}*/
+                                //value={point}
 
-                              //onChange={({target}) => setPoint(target?.value)}
+                              onChange={({target}) => setPoint(parseInt(target?.value))}
                             />
-                            <button onClick={() => updatePoint(w.idworker, w.points, point.find(p => p.id == w.idworker))}>Agregar punto</button>              
+                            <button 
+                              //onClick={() => updatePoint(w.idworker, w.points, point.find(p => p.id == w.idworker))}
+                              onClick={() => updatePoint(w.idworker, w.points, point)}
+                              >Agregar punto</button>              
                     </div>
                 ))
             }                                 
