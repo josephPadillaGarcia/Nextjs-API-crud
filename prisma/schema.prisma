@@ -14,12 +14,13 @@ datasource db {
 }
 
 model Worker {
-  idworker Int @id @default(autoincrement())
-  nombre String @db.VarChar(255)
-  apellido String @db.VarChar(255)
-  edad Int
-  dni Int
-  points Int
+  idworker  Int      @id @default(autoincrement())
+  nombre    String   @db.VarChar(255)
+  apellido  String   @db.VarChar(255)
+  edad      Int
+  dni       String   @db.VarChar(255)
+  points    Int
+  cargo     String   @db.VarChar(255)
   createdAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  updateAt  DateTime @updatedAt
 }

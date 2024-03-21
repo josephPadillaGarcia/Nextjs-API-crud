@@ -7,6 +7,7 @@ function Colaborador(){
     const [lastname, setLastName] = useState("");
     const [age, setAge] = useState("");
     const [dni, setDni] = useState("");
+    const [cargo, setCargo] = useState("");
     const point = 0;
 
     const [data, setData] = useState([]);
@@ -40,7 +41,8 @@ function Colaborador(){
                 apellido: lastname,
                 edad: numAge,
                 dni: numDni,
-                points: point
+                points: point,
+                cargo: cargo
             }
 
             fetch('http://localhost:3000/api/worker', {
@@ -98,6 +100,16 @@ function Colaborador(){
                             name="dni"
                             value={dni}
                             onChange={({target}) => setDni(target?.value)}
+                        />
+                    </div>
+
+                    <div className="form-block">
+                        <label>Cargo</label>
+                        <input 
+                            type="text" 
+                            name="Cargo"
+                            value={cargo}
+                            onChange={({target}) => setCargo(target?.value)}
                         />
                     </div>
 
