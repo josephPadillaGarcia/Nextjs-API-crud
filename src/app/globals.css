@@ -54,6 +54,8 @@ li{
     padding: 1.8rem;
     border: 1px solid #e9e9e9;
     border-radius: 10px;
+    background-color: #ffffff;
+    position: relative;
 }
 
 .form-content h2 {
@@ -68,6 +70,8 @@ li{
 }
 .form-block input {
     padding-left: 8px;
+    width: 268px;
+    height: 38px;
 }
 
 input {
@@ -77,9 +81,18 @@ input {
     margin-top: 5px;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
+/*input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type=number] { -moz-appearance:textfield; }*/
+
+input[type="number"]
+{
+    -webkit-appearance: textfield !important;
+    margin: 0;
+    -moz-appearance:textfield !important;
 }
 
 .button {
@@ -88,10 +101,14 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 0.8rem 0;
     border: 0px;
     border-radius: 5px;
-    background: #26a0f9;
+    background: #4c1130;
     color: #ffffff;
     cursor: pointer;
     font-weight: bold;
+}
+
+.button--more{
+    
 }
 
 
@@ -117,6 +134,10 @@ input[type=number]::-webkit-outer-spin-button {
     display: grid;
     grid-template-columns: repeat(1, 1fr auto);
     grid-gap: 0.6rem;
+    padding: 1.2rem 0;
+}
+.search button{
+    background-color: rgba(255, 255, 255, 0.29);
 }
 
 .search input {
@@ -140,3 +161,7 @@ input{
     outline: none;
 }
 
+#modal-formulario:target {
+    opacity: 1;
+    pointer-events: auto;
+  }

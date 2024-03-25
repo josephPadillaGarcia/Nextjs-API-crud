@@ -7,9 +7,9 @@
   min-height: 100vh;
 }
 
-img{
+/*img{
   display: block;
-}
+}*/
 .description {
   display: inherit;
   justify-content: inherit;

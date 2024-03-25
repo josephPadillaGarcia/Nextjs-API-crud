@@ -102,7 +102,7 @@ function Colaborador(){
                         <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl6}`}></div>
                         <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>                        
                             <div className={estilo.headerworker__boton}>
-                                <a href="#!">Agregar Usuario</a>
+                                <a href="#modal-formulario">Agregar Usuario</a>
                             </div>
                         </div>
                     </div>
@@ -134,65 +134,6 @@ function Colaborador(){
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div className="content">
-                <div className="form-content">
-                    <h2>Colaboradores</h2>
-                    <form method="" action="" onSubmit={submitForm}>
-                        <div className="form-block">
-                            <label>Nombre</label>
-                            <input 
-                                type="text" 
-                                name="name" 
-                                value={name}
-                                onChange={({target}) => setName(target?.value)}
-                            />
-                        </div>
-
-                        <div className="form-block">
-                            <label>Apellido</label>
-                            <input 
-                                type="text" 
-                                name="lastname" 
-                                value={lastname}
-                                onChange={({target}) => setLastName(target?.value)}
-                            />
-                        </div>
-
-                        <div className="form-block">
-                            <label>Edad</label>
-                            <input 
-                                type="number" 
-                                name="age"
-                                value={age}
-                                onChange={({target}) => setAge(target?.value)}
-                            />
-                        </div>
-
-                        <div className="form-block">
-                            <label>DNI</label>
-                            <input 
-                                type="number" 
-                                name="dni"
-                                value={dni}
-                                onChange={({target}) => setDni(target?.value)}
-                            />
-                        </div>
-
-                        <div className="form-block">
-                            <label>Cargo</label>
-                            <input 
-                                type="text" 
-                                name="Cargo"
-                                value={cargo}
-                                onChange={({target}) => setCargo(target?.value)}
-                            />
-                        </div>
-
-                        <button type="submit" className="button">Agregar Colaborador</button>
-                    </form>
                 </div>
             </div>
 
@@ -232,6 +173,77 @@ function Colaborador(){
                     </div>
                 </div>
             </div>
+
+
+            <div id="modal-formulario" className={estilo.modal}>
+                <div className={estilo.modal__contenido}>
+                    <div className={estilo.modal__bloque}>
+
+                        <div className="content">
+                            <div className="form-content">
+                                <div className={estilo.modal__head}>                    
+                                    <a href="#!" className={estilo.modal__close}><i class="ri-close-large-line"></i></a>
+                                </div>
+                                <h2>Nuevo Colaborador</h2>
+                                <form method="" action="" onSubmit={submitForm}>
+                                    <div className="form-block">
+                                        <label>Nombre</label>
+                                        <input 
+                                            type="text" 
+                                            name="name" 
+                                            value={name}
+                                            onChange={({target}) => setName(target?.value)}
+                                        />
+                                    </div>
+
+                                    <div className="form-block">
+                                        <label>Apellido</label>
+                                        <input 
+                                            type="text" 
+                                            name="lastname" 
+                                            value={lastname}
+                                            onChange={({target}) => setLastName(target?.value)}
+                                        />
+                                    </div>
+
+                                    <div className="form-block">
+                                        <label>Edad</label>
+                                        <input 
+                                            type="number" 
+                                            name="age"
+                                            value={age}
+                                            onChange={({target}) => setAge(target?.value)}
+                                        />
+                                    </div>
+
+                                    <div className="form-block">
+                                        <label>DNI</label>
+                                        <input 
+                                            type="number" 
+                                            name="dni"
+                                            value={dni}
+                                            onChange={({target}) => setDni(target?.value)}
+                                        />
+                                    </div>
+
+                                    <div className="form-block">
+                                        <label>Cargo</label>
+                                        <input 
+                                            type="text" 
+                                            name="Cargo"
+                                            value={cargo}
+                                            onChange={({target}) => setCargo(target?.value)}
+                                        />
+                                    </div>
+
+                                    <button type="submit" className="button">Agregar Usuario</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
 
 
         </div>
