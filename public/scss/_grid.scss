@@ -1,0 +1,104 @@
+.container {
+  margin: 0 auto;
+  max-width: $max-container;
+  width: $container;
+}
+
+@media only screen and (min-width: $t_cell){
+  .container {
+      width: 85%!important;
+  }
+}
+@media only screen and (min-width: $t_tablet){
+  .container {
+      width: 90%!important;
+  }
+}
+@media only screen and (min-width: $t_laptop){
+    .container {
+        width: 80%!important;
+    }
+}
+@media only screen and (min-width: $t_escritorio){
+    .container {
+        width: 1150px!important;
+    }
+}
+
+.grid{
+    display: grid;
+}
+.no-gap {
+    grid-gap: 0!important;
+}
+/*=============================================================
+==================================================================
+============================================================*/
+
+.gridcol {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 22px;
+  }
+  
+  @for $i from 1 through 12 {
+    .grid#{$i} {
+      grid-column: span ($i);
+    }
+  }
+  
+  @media screen and (min-width: 100px){
+    @for $i from 1 through 12 {
+      .grids#{$i} {
+        grid-column: span ($i);
+      }
+    }
+  }
+  
+  @media screen and (min-width: $t_cell){
+    @for $i from 1 through 12 {
+      .gridm#{$i} {
+        grid-column: span ($i);
+      }
+    }
+
+  }
+  
+  @media screen and (min-width: $t_tablet){
+    @for $i from 1 through 12 {
+      .gridl#{$i} {
+        grid-column: span ($i);
+      }
+    }
+
+  }
+  
+  @media screen and (min-width: $t_laptop) {
+    @for $i from 1 through 12 {
+      .gridxl#{$i} {
+        grid-column: span ($i);
+      }
+    }
+  }
+
+
+
+
+
+  @media screen and (max-width: $t_cell){
+    .no-movil {
+      display: none!important;
+    }
+  }
+  @media screen and (max-width: $t_cell){
+    .si-movil {
+      display: block!important;
+    }
+  }
+ 
+
+ 
+  
+ 
+  
+

@@ -1,0 +1,127 @@
+@import 'variables';
+@import 'grid';
+@import 'responsive';
+
+/*===========================================================================================================
+=============================================================================================================*/
+
+.text-white{
+    color:white!important;
+}
+
+/*
+    Position
+*/
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.fixed{
+    position: fixed;
+}
+/*=================*/
+
+/*
+    Espacio entre secciones
+*/
+.space-section{
+    /*margin-top: 50px;*/
+    margin-bottom: 0;
+    padding: 10px 0px;
+    z-index: 2;
+}
+/*=================*/
+
+/*
+    Flex
+*/
+.flex{
+    display: flex;
+}
+
+.aling-center{
+    align-items: center;
+}
+
+.justify-star{
+    justify-content: start;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-end{
+    justify-content: end;
+}
+
+.space-around{
+    justify-content: space-around;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+/*=================*/
+
+/*
+* HEADER COLABORADORES
+*/
+
+.headerworker{
+    background-color: $color_1;
+    img{
+        width: 75px;
+    }
+    &__logo{
+        height: 100%;
+        display: grid;
+        align-content: center;
+    }
+    &__boton{
+        height: 100%;
+        padding: 1.2rem 0;
+        a{
+            background-color: rgba(255, 255, 255, 0.29);
+            padding: 12px 0;
+            color: #ffffff;
+            border-radius: 5px;
+            display: grid;
+            justify-content: center;
+            font-weight: bold;
+        }
+    }
+}
+
+.tipocargoworker{
+    background-color: #eeeeee;
+    padding: 0.8rem 0;
+    &__content{
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        flex-flow: column;
+    }
+    &__boton{
+        button{
+            background-color: #4c1130;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            width: 100%;
+            height: 35px;
+            display: block;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+    &__img{
+        img{            
+            width: 100%;
+        }
+    }
+}
+
+/*====================*/
