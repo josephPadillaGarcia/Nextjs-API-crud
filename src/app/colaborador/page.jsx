@@ -35,25 +35,38 @@ function Colaborador(){
     }
 
     const getDataCargoWorker = async (cargoworker) =>{
-             
-        console.log("cargo: " + cargoworker);
-        if (data.length > 0) {
-            setData([]);
-        }
-        //console.log("data:"+data);
         const url = 'http://localhost:3000/api/workercargo/'+cargoworker;
         const res = await fetch(url, {method: 'GET', cache: 'no-cache'});
         const resultcargo  = await res.json();
-        setData(resultcargo.data);
+        setData(resultcargo);
     }
 
     const getDataPromotoresWorker = async (cargoworker) => {
-        if (cargoworker == "") {
+        if (cargoworker == "" || cargoworker) {
             const cargoworker = "promotor";
             getDataCargoWorker(cargoworker);
-            //console.log("cargo: " + cargoworker);
         }
-        //console.log("cargo: " + cargoworker);
+    }
+
+    const getDataCabezasWorker = async (cargoworker) => {
+        if (cargoworker == "" || cargoworker) {
+            const cargoworker = "cabeza";
+            getDataCargoWorker(cargoworker);
+        }
+    }
+
+    const getDataCoordinadoresWorker = async (cargoworker) => {
+        if (cargoworker == "" || cargoworker) {
+            const cargoworker = "coordinador";
+            getDataCargoWorker(cargoworker);
+        }
+    }
+
+    const getDataJefeWorker = async (cargoworker) => {
+        if (cargoworker == "" || cargoworker) {
+            const cargoworker = "jefe de equipo";
+            getDataCargoWorker(cargoworker);
+        }
     }
 
     const deleteworker = async (id) =>{        
