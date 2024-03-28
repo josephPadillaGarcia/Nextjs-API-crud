@@ -19,8 +19,25 @@ input.vs__search {
 
 @media (max-width: 1160px){
 }
-@media (max-width: 920px){
-    
+@media (max-width: 720px){
+    .tableworker{
+        padding-top: 20px;
+          &__list{
+              display: flex;
+              gap: 8px;
+              align-items: center;
+          }
+      }
+    .tipocargoworker{
+        &__content{
+            display: grid !important;            
+            grid-template-columns: repeat(1, 1fr 1fr);
+            gap: 5.6rem;
+            /*justify-content: space-between;
+            height: 100%;*/
+            //flex-flow: row !important;
+        }
+    }
 }
 @media (max-width: 690px){
 }

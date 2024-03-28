@@ -82,7 +82,7 @@
     }
     &__boton{
         height: 100%;
-        padding: 1.2rem 0;
+        padding: 1.219rem 0;
         a{
             background-color: rgba(255, 255, 255, 0.29);
             padding: 12px 0;
@@ -99,7 +99,7 @@
 
 .tipocargoworker{
     background-color: #eeeeee;
-    padding: 0.8rem 0;
+    padding: 0.78110rem 0;
     &__content{
         display: flex;
         justify-content: space-between;
@@ -127,6 +127,7 @@
 }
 
 .tableworker{
+  padding-top: 20px;
     &__list{
         display: flex;
         gap: 8px;

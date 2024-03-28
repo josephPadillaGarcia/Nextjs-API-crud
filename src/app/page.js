@@ -46,13 +46,13 @@ export default function Home() {
 
         <div className={estilo.container}>
             <div className={estilo.gridcol}>
-                <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>
+                <div className={`${estilo.grids2} ${estilo.gridm3} ${estilo.gridl3}`}>
                     <div className={estilo.headerworker__logo}>
                         <img src="/image/morena-isotipo-blanco.png" alt="" />
                     </div>
                 </div>
-                <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl5}`}></div>
-                <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl4}`}>                        
+                <div className={`${estilo.grids1} ${estilo.gridm4} ${estilo.gridl5}`}></div>
+                <div className={`${estilo.grids9} ${estilo.gridm5} ${estilo.gridl4}`}>                        
                       <div className='search'>
                           <input 
                               type="text" 
@@ -74,7 +74,7 @@ export default function Home() {
                   <div className={`${estilo.grids12} ${estilo.gridm12} ${estilo.gridl12}`}>
                       <div className="content__worker  content__worker__scroll">
                           <div className="">
-                              <div className="worker">
+                              <div className="worker headworker listainfoworker__search">
                                   <p>NOMBRE Y APELLIDO</p>
                                   <p>PUNTAJE</p>
                                   <p>ACTION</p>
@@ -82,7 +82,7 @@ export default function Home() {
                           </div>
                           {
                             data.map((w, k) => (
-                                <div className="worker">
+                                <div className="worker listinfoworker listainfoworker__search">
                                     <p>{w.nombre} {w.apellido}</p>
                                     <p>{w.points}</p>
                                     <div className={estilo.tableworker__list}>

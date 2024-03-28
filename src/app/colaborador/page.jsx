@@ -9,10 +9,7 @@ function Colaborador(){
     const [age, setAge] = useState("");
     const [dni, setDni] = useState("");
     const [cargo, setCargo] = useState("");
-    /*const cargoPromotor = "promotor";    
-    const cargoCabeza = "cabeza";
-    const cargoCoordinador = "coordinador";
-    const cargoJefe = "jefe de equipo"*/
+    const [selectcargo, setSelectCargo] = useState("");
     const cargoworker = "";
     const point = 0;
 
@@ -20,11 +17,6 @@ function Colaborador(){
 
     useEffect(() => {
         getDataWorker();
-        //getDataCargoWorker(cargoworker);
-        /*if (cargoworker == "") {
-            const cargoworker = "promotor";
-            getDataCargoWorker(cargoworker);
-        }*/
     }, [])
 
     const getDataWorker = async () =>{
@@ -76,25 +68,42 @@ function Colaborador(){
         getDataWorker();
     }
 
+    const resetpointsworker = async () => {
+        const resetPoint = {
+            points: point
+          }
+        const url = 'http://localhost:3000/api/worker';
+        const res = await fetch(url, {method: 'PUT', body:JSON.stringify(resetPoint)});
+        getDataWorker();
+      }
+
+
     const submitForm = (e) =>{
         e.preventDefault();
 
         try {
             const numAge = parseInt(age);
-            const numDni = parseInt(dni);
             const newWorker = {
                 nombre: name,
                 apellido: lastname,
                 edad: numAge,
-                dni: numDni,
+                dni: dni,
                 points: point,
-                cargo: cargo
+                cargo: selectcargo
             }
+
+            /*console.log(newWorker);*/
 
             fetch('http://localhost:3000/api/worker', {
                 method: 'POST',
                 body: JSON.stringify(newWorker),
             }).then(()=>(getDataWorker())).catch((e)=>(console.log(e)))
+            
+            setName("");
+            setLastName("");
+            setAge("");
+            setDni("");
+            setCargo("");
             
         } catch (error) {
             
@@ -107,13 +116,13 @@ function Colaborador(){
 
                 <div className={estilo.container}>
                     <div className={estilo.gridcol}>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>
+                        <div className={`${estilo.grids3} ${estilo.gridm3} ${estilo.gridl3}`}>
                             <div className={estilo.headerworker__logo}>
                                 <img src="/image/morena-isotipo-blanco.png" alt="" />
                             </div>
                         </div>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl6}`}></div>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>                        
+                        <div className={`${estilo.grids3} ${estilo.gridm6} ${estilo.gridl6}`}></div>
+                        <div className={`${estilo.grids6} ${estilo.gridm3} ${estilo.gridl3}`}>                        
                             <div className={estilo.headerworker__boton}>
                                 <a href="#modal-formulario">Agregar Usuario</a>
                             </div>
@@ -126,22 +135,22 @@ function Colaborador(){
             <div className={estilo.tipocargoworker}>
                 <div className={estilo.container}>
                     <div className={estilo.gridcol}>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>                        
+                        <div className={`${estilo.grids6} ${estilo.gridm3} ${estilo.gridl3}`}>                        
                             <div className={estilo.tipocargoworker__boton}>
                                 <button onClick={() => getDataPromotoresWorker(cargoworker)}>PROMOTORES</button>
                             </div>
                         </div>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>                        
+                        <div className={`${estilo.grids6} ${estilo.gridm3} ${estilo.gridl3}`}>                        
                             <div className={estilo.tipocargoworker__boton}>
                                 <button onClick={() => getDataCabezasWorker(cargoworker)}>CABEZAS</button>
                             </div>
                         </div>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>                        
+                        <div className={`${estilo.grids6} ${estilo.gridm3} ${estilo.gridl3}`}>                        
                             <div className={estilo.tipocargoworker__boton}>
                                 <button onClick={() => getDataCoordinadoresWorker(cargoworker)}>COORDINADORES</button>
                             </div>
                         </div>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>                        
+                        <div className={`${estilo.grids6} ${estilo.gridm3} ${estilo.gridl3}`}>                        
                             <div className={estilo.tipocargoworker__boton}>
                                 <button onClick={() => getDataJefeWorker(cargoworker)}>JEFE DE EQUIPO</button>
                             </div>
@@ -153,10 +162,10 @@ function Colaborador(){
             <div className={estilo.tableworker}>
                 <div className={estilo.container}>
                     <div className={estilo.gridcol}>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl9}`}>
+                        <div className={`${estilo.grids12} ${estilo.gridm8} ${estilo.gridl9}`}>
                             <div className="content__worker  content__worker__scroll">
                                 <div className="">
-                                    <div className="worker">
+                                    <div className="worker headworker">
                                         <p>NOMBRE Y APELLIDO</p>
                                         <p>PUNTAJE</p>
                                         <p>ACTION</p>
@@ -164,22 +173,22 @@ function Colaborador(){
                                 </div>
                                 {
                                     data.map(w => (
-                                        <div className="worker">
+                                        <div className="worker listinfoworker">
                                             <p>{w.nombre} {w.apellido}</p>
                                             <p>{w.points}</p>
-                                            <button className="button" onClick={() => deleteworker(w.idworker)}>Borrar</button>                    
+                                            <button className="button" onClick={() => deleteworker(w.idworker)}><i class="ri-delete-bin-6-line"></i></button>                    
                                         </div>
                                     ))
                                 }                                 
                             </div>
                         </div>
-                        <div className={`${estilo.grids12} ${estilo.gridm6} ${estilo.gridl3}`}>
+                        <div className={`${estilo.grids12} ${estilo.gridm4} ${estilo.gridl3}`}>
                             <div className={estilo.tipocargoworker__content}>
                                 <div className={estilo.tipocargoworker__boton}>
-                                    <button onClick={() => deleteworker(w.idworker)}>ELIMINAR PUNTAJE</button>
+                                    <button onClick={resetpointsworker}>ELIMINAR PUNTAJE</button>
                                 </div>
                                 <div className={estilo.tipocargoworker__img}>
-                                    <img src="/image/editado.png" alt="" />
+                                    <img src="/image/morena.png" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -232,7 +241,7 @@ function Colaborador(){
                                     <div className="form-block">
                                         <label>DNI</label>
                                         <input 
-                                            type="number" 
+                                            type="text" 
                                             name="dni"
                                             value={dni}
                                             onChange={({target}) => setDni(target?.value)}
@@ -241,12 +250,13 @@ function Colaborador(){
 
                                     <div className="form-block">
                                         <label>Cargo</label>
-                                        <input 
-                                            type="text" 
-                                            name="Cargo"
-                                            value={cargo}
-                                            onChange={({target}) => setCargo(target?.value)}
-                                        />
+                                        <select value={selectcargo} onChange={({target}) => setSelectCargo(target?.value)}>
+                                            <option value="" disabled>Seleccionar</option>
+                                            <option value="promotor">Promotor</option>
+                                            <option value="cabeza">Cabeza</option>
+                                            <option value="coordinador">Coordinador</option>
+                                            <option value="jefe de equipo">Jefe de equipo</option>
+                                        </select>
                                     </div>
 
                                     <button type="submit" className="button">Agregar Usuario</button>
