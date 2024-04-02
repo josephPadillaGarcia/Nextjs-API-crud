@@ -14,7 +14,7 @@ export default function Home() {
   }, []);
 
   const searchForm = async (name) =>{
-    const url = 'http://localhost:3000/api/worker/'+name;
+    const url = 'https://morenadisco.playgroup.pe/api/worker/'+name;
     const res = await fetch(url, {method: 'GET'});
     const data = await res.json();
     console.log(data)
@@ -26,7 +26,7 @@ export default function Home() {
     const changePoint = {
       points: respoint
     }
-    const url = 'http://localhost:3000/api/workerid/'+id;
+    const url = 'https://morenadisco.playgroup.pe/api/workerid/'+id;
     const res = await fetch(url, {method: 'PUT', body:JSON.stringify(changePoint)});
     searchForm(name);
   }
@@ -36,7 +36,7 @@ export default function Home() {
     const changePoint = {
       points: respoint
     }
-    const url = 'http://localhost:3000/api/workerid/'+id;
+    const url = 'https://morenadisco.playgroup.pe/api/workerid/'+id;
     const res = await fetch(url, {method: 'PUT', body:JSON.stringify(changePoint)});
     searchForm(name);
   }

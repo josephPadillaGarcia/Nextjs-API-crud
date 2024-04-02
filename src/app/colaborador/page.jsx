@@ -20,14 +20,14 @@ function Colaborador(){
     }, [])
 
     const getDataWorker = async () =>{
-        const url = 'http://localhost:3000/api/worker';
+        const url = 'https://morenadisco.playgroup.pe/api/worker';
         const res = await fetch(url, {method: 'GET', cache: 'no-cache'});
         const resultados  = await res.json();
         setData(resultados.data);
     }
 
     const getDataCargoWorker = async (cargoworker) =>{
-        const url = 'http://localhost:3000/api/workercargo/'+cargoworker;
+        const url = 'https://morenadisco.playgroup.pe/api/workercargo/'+cargoworker;
         const res = await fetch(url, {method: 'GET', cache: 'no-cache'});
         const resultcargo  = await res.json();
         setData(resultcargo);
@@ -63,7 +63,7 @@ function Colaborador(){
 
     const deleteworker = async (id) =>{        
         //console.log("id: " + id);
-        const url = 'http://localhost:3000/api/workerid/'+id;
+        const url = 'https://morenadisco.playgroup.pe/api/workerid/'+id;
         const res = await fetch(url, {method: 'DELETE'});
         getDataWorker();
     }
@@ -72,7 +72,7 @@ function Colaborador(){
         const resetPoint = {
             points: point
           }
-        const url = 'http://localhost:3000/api/worker';
+        const url = 'https://morenadisco.playgroup.pe/api/worker';
         const res = await fetch(url, {method: 'PUT', body:JSON.stringify(resetPoint)});
         getDataWorker();
       }
@@ -94,7 +94,7 @@ function Colaborador(){
 
             /*console.log(newWorker);*/
 
-            fetch('http://localhost:3000/api/worker', {
+            fetch('https://morenadisco.playgroup.pe/api/worker', {
                 method: 'POST',
                 body: JSON.stringify(newWorker),
             }).then(()=>(getDataWorker())).catch((e)=>(console.log(e)))
