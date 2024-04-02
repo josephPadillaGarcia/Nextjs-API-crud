@@ -117,6 +117,9 @@
             display: block;
             border-radius: 5px;
             cursor: pointer;
+            &.button__action{
+              margin-bottom: 15px;
+            }
         }
     }
     &__img{
@@ -133,6 +136,31 @@
         gap: 8px;
         align-items: center;
     }
+    &__search{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr auto);
+      input{
+        width: 100%;
+      }
+      button{
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+}
+
+.mensaje{
+  padding: 1.5rem 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.listaction{
+  display: flex;
+  gap: 6px;
 }
 
 /*====================*/

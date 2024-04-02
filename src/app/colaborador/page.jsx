@@ -185,7 +185,8 @@ function Colaborador(){
                         <div className={`${estilo.grids12} ${estilo.gridm4} ${estilo.gridl3}`}>
                             <div className={estilo.tipocargoworker__content}>
                                 <div className={estilo.tipocargoworker__boton}>
-                                    <button onClick={resetpointsworker}>ELIMINAR PUNTAJE</button>
+                                    <button className={estilo.button__action} onClick={resetpointsworker}>ELIMINAR PUNTAJE</button>
+                                    <button className={estilo.button__action} onClick={getDataWorker}>MOSTRAR TODO</button>
                                 </div>
                                 <div className={estilo.tipocargoworker__img}>
                                     <img src="/image/morena.png" alt="" />

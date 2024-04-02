@@ -39,7 +39,20 @@ input.vs__search {
         }
     }
 }
-@media (max-width: 690px){
+@media (max-width: 620px){
+    .tableworker{
+          &__search{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr) !important;
+            button{
+                width: 100% !important;
+            }
+          }
+      }
+
+      .headworker p {
+        font-size: 11px !important;
+    }
 }
 
 @media (max-width: 450px){
