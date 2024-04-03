@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Worker {
+model worker {
   idworker  Int      @id @default(autoincrement())
   nombre    String   @db.VarChar(255)
   apellido  String   @db.VarChar(255)
